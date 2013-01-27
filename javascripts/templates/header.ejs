@@ -1,0 +1,9 @@
+<% if (typeof previous !== "undefined") { %>
+  <a href="<%= previous.path %>"><%= previous.name %></a>
+<% } %>
+
+<h1><%= title %></h1>
+
+<% if (typeof next !== "undefined") { %>
+  <a href="<%= next.path %>"><%= next.name %></a>
+<% } %>

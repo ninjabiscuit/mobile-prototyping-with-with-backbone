@@ -1,0 +1,51 @@
+* {
+  -webkit-box-sizing:border-box;
+  -webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+
+body, html {
+  height: 100%;
+}
+
+body {
+  font-family: Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
+  font-size:16px;
+
+  -webkit-text-size-adjust: none;
+  -webkit-font-smoothing antialiased
+
+  background-color #fff
+  overflow-x: hidden;
+}
+
+.app-container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.page {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.home-page {
+  background:#90ca77;
+}
+
+.page-1 {
+  background:#81c6dd;
+}
+
+.page-2 {
+  background:#e48743;
+}
