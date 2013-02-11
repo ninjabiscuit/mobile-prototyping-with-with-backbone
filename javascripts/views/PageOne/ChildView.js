@@ -11,17 +11,10 @@ define([
     className : "child-view-item",
     tagName : "div",
 
-    initialize: function() {
-      // this.listenTo(this.model, 'remove', this.remove.bind(this));
-    },
+    initialize: function() {},
 
     render: function() {
-      // this.$el.html(this.template());
       return this;
-    },
-
-    remove : function() {
-      console.log("childView1");
     }
 
   });

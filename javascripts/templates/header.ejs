@@ -1,9 +1,9 @@
 <% if (typeof previous !== "undefined") { %>
-  <a href="<%= previous.path %>"><%= previous.name %></a>
+  <a href="<%= previous.path %>" class="navigate page-header__btn"><%= previous.name %></a>
 <% } %>
 
-<h1><%= title %></h1>
+<h1 class="page-header__title"><%= title %></h1>
 
 <% if (typeof next !== "undefined") { %>
-  <a href="<%= next.path %>"><%= next.name %></a>
+  <a href="<%= next.path %>" class="navigate page-header__btn"><%= next.name %></a>
 <% } %>

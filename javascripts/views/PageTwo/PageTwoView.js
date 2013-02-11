@@ -2,10 +2,9 @@ define([
   'lib/underscore',
   'lib/backbone',
   'app/Page',
-  'views/PageTwo/ChildView',
-  'views/HeaderView'
+  'views/PageTwo/ChildView'
   ],
-  function(_, Backbone, Page, ChildView, HeaderView) {
+  function(_, Backbone, Page, ChildView) {
 
   return Page.extend({
 
@@ -19,20 +18,14 @@ define([
 
     id : "home_page",
     tagName : "div",
-    className : "page-2 page",
+    className : "page-2 page full-screen",
 
     initialize : function() {
-      // this.listenTo(this.collection, "add", this.renderUser.bind(this));
-      this.addChildView(new ChildView());
+      this.addChildView(ChildView);
     },
 
     render : function() {
-      this.addChildView(new HeaderView({model:this.header}));
       return this;
-    },
-
-    remove : function() {
-      console.log("pagetwo");
     }
 
   });

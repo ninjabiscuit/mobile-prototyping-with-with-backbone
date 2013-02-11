@@ -12,7 +12,7 @@
     return 'transition' in style || 'webkitTransition' in style || 'MozTransition' in style;
   })());
 
-  vendor = $.browser.mozilla ? 'moz' : void 0;
+  // vendor = $.browser.mozilla ? 'moz' : void 0;
 
   vendor || (vendor = 'webkit');
 

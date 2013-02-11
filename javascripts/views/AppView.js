@@ -1,33 +1,48 @@
 define([
   'lib/underscore',
-  'lib/backbone'
-  ], function(_, Backbone) {
+  'lib/backbone',
+  'views/Header',
+  'jquery'
+  ], function(_, Backbone, Header) {
 
   return Backbone.View.extend({
 
     el : "#app_container",
 
     events : {
-      "click a" : "handleHistoryClicks"
+      "click a.navigate" : "handleHistoryClicks"
     },
 
-    current_view : undefined,
+    current_page   : undefined,
+    current_header : undefined,
 
     initialize : function() {
       this.render();
     },
 
-    show : function(view, direction) {
-
-      direction || (direction = "right");
-
-      if (!_.isUndefined(this.current_view)) {
-        this.current_view.deactivate({trans:direction});
+    show : function(view) {
+      if (!_.isUndefined(this.current_page)) {
+        this.current_page.deactivate("right");
       }
 
-      view.render().$el.appendTo(this.$el);
-      view.activate({trans:direction});
-      this.current_view = view;
+      if (!_.isUndefined(this.current_header)) {
+        this.current_header.deactivate("right");
+      }
+
+      if (!_.isUndefined(view.header)) {
+        var header = new Header({
+          model: typeof view.header === "function" ? view.header.call(view) : view.header
+        });
+        this.current_header = this.activateView(header);
+      }
+      
+      this.current_page = this.activateView(view);
+    },
+
+    activateView : function(view) {
+      this.$el.append(view.render().$el);
+      view.activate("right");
+      return view;
     },
 
     render: function() {

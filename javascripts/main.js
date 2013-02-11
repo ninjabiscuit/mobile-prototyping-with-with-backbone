@@ -1,9 +1,14 @@
 require.config({
   baseUrl: 'javascripts',
   paths: {
-    "text" : "lib/text"
+    "text" : "lib/text",
+    "jquery": "lib/jquery-custom-1.9.0"
   },
   shim: {
+    'gfx': {
+      deps: ['jquery'],
+      exports: '$'
+    },
     'lib/underscore': {
       exports: '_'
     },
@@ -16,14 +21,23 @@ require.config({
 
 require([
   'lib/backbone',
-  'app/AppRouter'
+  'app/AppRouter',
+  'views/AppView',
+  'lib/FastClick'
   ],
-  function(Backbone, AppRouter){
+  function(Backbone, AppRouter, AppView){
 
     $(document.body).ready(function(){
 
-      new AppRouter();
+      new FastClick(this);
+      new AppRouter(new AppView());
+
+      // allow :active styles to work in your CSS on a page in Mobile Safari
+      // http://css-tricks.com/snippets/css/remove-gray-highlight-when-tapping-links-in-mobile-safari/
+      document.addEventListener("touchstart", function(){}, true);
+
       Backbone.history.start({pushState: true, root: "/~circularpiecesofmusic/mobile-prototyping-with-with-backbone/"});
+
     });
   }
 );

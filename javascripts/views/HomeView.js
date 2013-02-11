@@ -1,10 +1,9 @@
 define([
   'lib/underscore',
   'lib/backbone',
-  'app/Page',
-  'views/HeaderView'
+  'app/Page'
   ],
-  function(_, Backbone, Page, HeaderView) {
+  function(_, Backbone, Page) {
 
   return Page.extend({
 
@@ -18,15 +17,10 @@ define([
 
     id : "home_page",
     tagName : "div",
-    className : "home-page page",
+    className : "home-page page full-screen",
 
     render : function() {
-      // this.addChildView(new HeaderView({model:this.header}));
       return this;
-    },
-
-    remove : function() {
-      console.log("homeview");
     }
 
   });
